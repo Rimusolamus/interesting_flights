@@ -1,8 +1,8 @@
 package cz.rimu.interestingflights.presentation.viewmodel
 
 import cz.rimu.interestingflights.data.constant.Constants
-import cz.rimu.interestingflights.domain.entity.FlightDomainEntities
-import cz.rimu.interestingflights.domain.usecase.FlightOffersUseCase
+import cz.rimu.interestingflights.domain.model.FlightDomain
+import cz.rimu.interestingflights.domain.usecase.FiveInterestingFlightsUseCase
 import cz.rimu.interestingflights.presentation.entity.FlightsState
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -13,15 +13,15 @@ import org.junit.Test
 import java.util.*
 
 class FlightsViewModelTest : ViewModelTest() {
-    private val flightOffersUseCase: FlightOffersUseCase = mockk(relaxed = true)
+    private val flightOffersUseCase: FiveInterestingFlightsUseCase = mockk(relaxed = true)
     private val viewModel = FlightsViewModel(flightOffersUseCase)
     private val startDate = Date(1666296458239)
 
     @Test
     fun `test uiState is notified with flights when calling getFlightsOffers`() {
-        val flightDomain = FlightDomainEntities.FlightDomainEntity(
+        val flightDomain = FlightDomain.FlightDomainEntity(
             listOf(
-                FlightDomainEntities.FlightDomainItem(
+                FlightDomain.FlightDomainItem(
                     "1",
                     "Vienna (VIE)",
                     "Bangkok (BKK)",
@@ -34,7 +34,7 @@ class FlightsViewModelTest : ViewModelTest() {
                     "26/10/2022"
 
                 ),
-                FlightDomainEntities.FlightDomainItem(
+                FlightDomain.FlightDomainItem(
                     "2",
                     "Madrid (MAD)",
                     "Vienna (VIE)",
@@ -64,7 +64,7 @@ class FlightsViewModelTest : ViewModelTest() {
     @Test
     fun `test uiState is notified with failure when calling getFlightsOffers`() {
         val errorMessage = Constants.SOCKET_TIME_OUT_EXCEPTION
-        val failure = FlightDomainEntities.Failure(errorMessage)
+        val failure = FlightDomain.Failure(errorMessage)
         runBlocking {
             coEvery { flightOffersUseCase.invoke(startDate) } returns failure
             viewModel.getFlightsOffers(startDate)

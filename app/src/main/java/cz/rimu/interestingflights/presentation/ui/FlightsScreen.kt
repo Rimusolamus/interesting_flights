@@ -22,7 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import cz.rimu.interestingflights.R
-import cz.rimu.interestingflights.domain.entity.FlightDomainEntities
+import cz.rimu.interestingflights.domain.model.FlightDomain
 import cz.rimu.interestingflights.presentation.viewmodel.FlightsViewModel
 import kiwi.orbit.compose.icons.Icons
 import kiwi.orbit.compose.ui.controls.Card
@@ -56,13 +56,13 @@ fun FlightsScreen(
 @Composable
 private fun FlightsAppBar() {
     TopAppBar(
-        title = { Text(stringResource(R.string.flights_screen)) }
+        title = { Text(stringResource(R.string.all_flights_screen)) }
     )
 }
 
 @Composable
 fun SetContentList(
-    flights: List<FlightDomainEntities.FlightDomainItem>,
+    flights: List<FlightDomain.FlightDomainItem>,
     paddingValues: PaddingValues
 ) {
     LazyColumn(
@@ -79,7 +79,7 @@ fun SetContentList(
 }
 
 @Composable
-fun FlightCard(flight: FlightDomainEntities.FlightDomainItem) {
+fun FlightCard(flight: FlightDomain.FlightDomainItem) {
     Card(
         modifier = Modifier
             .fillMaxWidth()

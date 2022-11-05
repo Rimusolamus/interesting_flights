@@ -14,7 +14,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             OrbitTheme {
                 rememberSystemUiController().setStatusBarColor(
-                    color = OrbitTheme.colors.primary.onNormal
+                    color = OrbitTheme.colors.primary.normalAlt
                 )
                 NavigationHost()
             }

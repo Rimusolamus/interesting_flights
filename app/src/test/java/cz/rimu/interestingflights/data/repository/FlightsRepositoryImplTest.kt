@@ -4,9 +4,9 @@ import cz.rimu.interestingflights.data.constant.Constants.CONNECT_EXCEPTION
 import cz.rimu.interestingflights.data.constant.NetworkStatus
 import cz.rimu.interestingflights.data.local.datasource.ViewedFlightsLocalDataSource
 import cz.rimu.interestingflights.data.remote.datasource.FlightsRemoteDataSourceImpl
-import cz.rimu.interestingflights.data.remote.entity.FlightItem
-import cz.rimu.interestingflights.data.remote.entity.FlightResponse
-import cz.rimu.interestingflights.domain.entity.FlightDomainEntities
+import cz.rimu.interestingflights.data.remote.model.Flight
+import cz.rimu.interestingflights.data.remote.model.FlightData
+import cz.rimu.interestingflights.domain.model.FlightDomain
 import io.mockk.*
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
@@ -26,7 +26,7 @@ class FlightsRepositoryImplTest {
     fun `test flightsRepository returns the viewed flights from viewedFlightsLocalDataSource is not Empty`() {
         val viewedFlights =
             listOf(
-                FlightDomainEntities.FlightDomainItem(
+                FlightDomain.FlightDomainItem(
                     "1",
                     "Vienna (VIE)",
                     "Bangkok (BKK)",
@@ -39,7 +39,7 @@ class FlightsRepositoryImplTest {
                     "20/10/2022"
 
                 ),
-                FlightDomainEntities.FlightDomainItem(
+                FlightDomain.FlightDomainItem(
                     "2",
                     "Madrid (MAD)",
                     "Vienna (VIE)",
@@ -51,7 +51,7 @@ class FlightsRepositoryImplTest {
                     "07/11/2022 08:30",
                     "20/10/2022",
                 ),
-                FlightDomainEntities.FlightDomainItem(
+                FlightDomain.FlightDomainItem(
                     "3",
                     "Prague (PRG)",
                     "Istanbul (SAW)",
@@ -63,7 +63,7 @@ class FlightsRepositoryImplTest {
                     "08/11/2022 13:00",
                     "20/10/2022",
                 ),
-                FlightDomainEntities.FlightDomainItem(
+                FlightDomain.FlightDomainItem(
                     "4",
                     "London (LGW)",
                     "Vienna (VIE)",
@@ -75,7 +75,7 @@ class FlightsRepositoryImplTest {
                     "08/11/2022 13:00",
                     "20/10/2022",
                 ),
-                FlightDomainEntities.FlightDomainItem(
+                FlightDomain.FlightDomainItem(
                     "5",
                     "Barcelona (BCN)",
                     "Vienna (VIE)",
@@ -92,7 +92,7 @@ class FlightsRepositoryImplTest {
         runBlocking {
             coEvery { viewedFlightsLocalDataSource.viewedFlightsByDate(startDate) } returns viewedFlights
             Assert.assertEquals(
-                FlightDomainEntities.FlightDomainEntity(flights = viewedFlights),
+                FlightDomain.FlightDomainEntity(flights = viewedFlights),
                 flightsRepositoryImpl.getFlights(startDate, endDate),
             )
         }
@@ -101,11 +101,11 @@ class FlightsRepositoryImplTest {
     @Test
     fun `test flightsRepository returns flightsDomainEntity from flightsRemoteDataSourceImpl has success response`() {
 
-        val flightsResponse: NetworkStatus<FlightResponse> =
+        val flightsResponse: NetworkStatus<FlightData> =
             NetworkStatus.Success(
-                FlightResponse(
+                FlightData(
                     listOf(
-                        FlightItem(
+                        Flight(
                             id = "1",
                             flyDuration = "19h 45m",
                             distance = 8459.46,
@@ -123,9 +123,9 @@ class FlightsRepositoryImplTest {
             )
 
 
-        val flightDomainEntity = FlightDomainEntities.FlightDomainEntity(
+        val flightDomainEntity = FlightDomain.FlightDomainEntity(
             listOf(
-                FlightDomainEntities.FlightDomainItem(
+                FlightDomain.FlightDomainItem(
                     "1",
                     "Vienna (VIE)",
                     "Bangkok (BKK)",
@@ -158,9 +158,9 @@ class FlightsRepositoryImplTest {
 
     @Test
     fun `test VehicleResponse Connection failed response should return Failure`() {
-        val flightFailedResponse: NetworkStatus<FlightResponse> =
+        val flightFailedResponse: NetworkStatus<FlightData> =
             NetworkStatus.Error(CONNECT_EXCEPTION)
-        val expected = FlightDomainEntities.Failure(CONNECT_EXCEPTION)
+        val expected = FlightDomain.Failure(CONNECT_EXCEPTION)
         runBlocking {
             coEvery {
                 flightsRemoteDataSourceImpl.getFlights(
@@ -177,7 +177,7 @@ class FlightsRepositoryImplTest {
     @Test
     fun `test viewedFlightsLocalDataSource saveFlights is called  from flightsRepository`() {
         val viewedFlights = listOf(
-            FlightDomainEntities.FlightDomainItem(
+            FlightDomain.FlightDomainItem(
                 "1",
                 "Vienna (VIE)",
                 "Bangkok (BKK)",
@@ -190,7 +190,7 @@ class FlightsRepositoryImplTest {
                 "26/10/2022"
 
             ),
-            FlightDomainEntities.FlightDomainItem(
+            FlightDomain.FlightDomainItem(
                 "2",
                 "Madrid (MAD)",
                 "Vienna (VIE)",
@@ -202,7 +202,7 @@ class FlightsRepositoryImplTest {
                 "07/11/2022 08:30",
                 "26/10/2022",
             ),
-            FlightDomainEntities.FlightDomainItem(
+            FlightDomain.FlightDomainItem(
                 "3",
                 "Prague (PRG)",
                 "Istanbul (SAW)",
@@ -214,7 +214,7 @@ class FlightsRepositoryImplTest {
                 "08/11/2022 13:00",
                 "26/10/2022",
             ),
-            FlightDomainEntities.FlightDomainItem(
+            FlightDomain.FlightDomainItem(
                 "4",
                 "London (LGW)",
                 "Vienna (VIE)",
@@ -226,7 +226,7 @@ class FlightsRepositoryImplTest {
                 "08/11/2022 13:00",
                 "26/10/2022",
             ),
-            FlightDomainEntities.FlightDomainItem(
+            FlightDomain.FlightDomainItem(
                 "5",
                 "Barcelona (BCN)",
                 "Vienna (VIE)",

@@ -1,13 +1,13 @@
-package cz.rimu.interestingflights.domain.entity
+package cz.rimu.interestingflights.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
-sealed class FlightDomainEntities {
+sealed class FlightDomain {
     data class FlightDomainEntity(
         val flights: List<FlightDomainItem>
-    ) : FlightDomainEntities()
+    ) : FlightDomain()
 
     @Entity(tableName = "viewedFlightsTable")
     data class FlightDomainItem(
@@ -17,13 +17,13 @@ sealed class FlightDomainEntities {
         val to: String,
         val flyDuration: String,
         val distance: String,
-        val price: Double,
+        val price: Long,
         val currency: String,
         val arrivalTime: String,
         val departureTime: String,
         val retrievalDate: String,
         )
 
-    data class Failure(val errorText: String) : FlightDomainEntities()
+    data class Failure(val errorText: String) : FlightDomain()
 }
 

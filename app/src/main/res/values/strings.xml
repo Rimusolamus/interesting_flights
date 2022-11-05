@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Interesting flights</string>
-    <string name="flights_screen">Recommended Flights</string>
+    <string name="all_flights_screen">Interesting Flights</string>
 </resources>

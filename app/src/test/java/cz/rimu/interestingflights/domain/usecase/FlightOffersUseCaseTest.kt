@@ -1,6 +1,6 @@
 package cz.rimu.interestingflights.domain.usecase
 
-import cz.rimu.interestingflights.domain.entity.FlightDomainEntities
+import cz.rimu.interestingflights.domain.model.FlightDomain
 import cz.rimu.interestingflights.domain.repository.FlightsRepository
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -19,7 +19,7 @@ class FlightOffersUseCaseTest {
     private val flightsRepository: FlightsRepository = mockk(relaxed = true)
 
     private val testDispatcher = UnconfinedTestDispatcher()
-    private val flightOffersUseCase = FlightOffersUseCase(
+    private val flightOffersUseCase = FiveInterestingFlightsUseCase(
         flightsRepository,
         testDispatcher
     )
@@ -38,9 +38,9 @@ class FlightOffersUseCaseTest {
     fun `test flightOffersUseCase returns filtered flights list when calling repository getFlights`() {
         val currentDate = Date(1666296458239)
 
-        val flightDomain = FlightDomainEntities.FlightDomainEntity(
+        val flightDomain = FlightDomain.FlightDomainEntity(
             listOf(
-                FlightDomainEntities.FlightDomainItem(
+                FlightDomain.FlightDomainItem(
                     "1",
                     "Vienna (VIE)",
                     "Bangkok (BKK)",
@@ -53,7 +53,7 @@ class FlightOffersUseCaseTest {
                     "26/10/2022"
 
                 ),
-                FlightDomainEntities.FlightDomainItem(
+                FlightDomain.FlightDomainItem(
                     "2",
                     "Madrid (MAD)",
                     "Vienna (VIE)",
@@ -65,7 +65,7 @@ class FlightOffersUseCaseTest {
                     "07/11/2022 08:30",
                     "26/10/2022",
                 ),
-                FlightDomainEntities.FlightDomainItem(
+                FlightDomain.FlightDomainItem(
                     "3",
                     "Prague (PRG)",
                     "Istanbul (SAW)",
@@ -77,7 +77,7 @@ class FlightOffersUseCaseTest {
                     "08/11/2022 13:00",
                     "26/10/2022",
                 ),
-                FlightDomainEntities.FlightDomainItem(
+                FlightDomain.FlightDomainItem(
                     "4",
                     "London (LGW)",
                     "Vienna (VIE)",
@@ -89,7 +89,7 @@ class FlightOffersUseCaseTest {
                     "08/11/2022 13:00",
                     "26/10/2022",
                 ),
-                FlightDomainEntities.FlightDomainItem(
+                FlightDomain.FlightDomainItem(
                     "5",
                     "Barcelona (BCN)",
                     "Vienna (VIE)",
@@ -100,7 +100,7 @@ class FlightOffersUseCaseTest {
                     "07/11/2022 11:30",
                     "07/11/2022 08:30",
                     "26/10/2022",
-                ), FlightDomainEntities.FlightDomainItem(
+                ), FlightDomain.FlightDomainItem(
                     "6",
                     "Vienna (VIE)",
                     "Dubai (DXB)",
@@ -111,7 +111,7 @@ class FlightOffersUseCaseTest {
                     "07/11/2022 22:05",
                     "07/11/2022 13:35",
                     "26/10/2022",
-                ), FlightDomainEntities.FlightDomainItem(
+                ), FlightDomain.FlightDomainItem(
                     "7",
                     "Katowice (KTW)",
                     "New York (JFK)",
@@ -128,9 +128,9 @@ class FlightOffersUseCaseTest {
         )
 
 
-        val filteredFlights = FlightDomainEntities.FlightDomainEntity(
+        val filteredFlights = FlightDomain.FlightDomainEntity(
             listOf(
-                FlightDomainEntities.FlightDomainItem(
+                FlightDomain.FlightDomainItem(
                     "1",
                     "Vienna (VIE)",
                     "Bangkok (BKK)",
@@ -143,7 +143,7 @@ class FlightOffersUseCaseTest {
                     "26/10/2022"
 
                 ),
-                FlightDomainEntities.FlightDomainItem(
+                FlightDomain.FlightDomainItem(
                     "2",
                     "Madrid (MAD)",
                     "Vienna (VIE)",
@@ -155,7 +155,7 @@ class FlightOffersUseCaseTest {
                     "07/11/2022 08:30",
                     "26/10/2022",
                 ),
-                FlightDomainEntities.FlightDomainItem(
+                FlightDomain.FlightDomainItem(
                     "3",
                     "Prague (PRG)",
                     "Istanbul (SAW)",
@@ -167,7 +167,7 @@ class FlightOffersUseCaseTest {
                     "08/11/2022 13:00",
                     "26/10/2022",
                 ),
-                FlightDomainEntities.FlightDomainItem(
+                FlightDomain.FlightDomainItem(
                     "4",
                     "London (LGW)",
                     "Vienna (VIE)",
@@ -179,7 +179,7 @@ class FlightOffersUseCaseTest {
                     "08/11/2022 13:00",
                     "26/10/2022",
                 ),
-                FlightDomainEntities.FlightDomainItem(
+                FlightDomain.FlightDomainItem(
                     "5",
                     "Barcelona (BCN)",
                     "Vienna (VIE)",

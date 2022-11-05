@@ -1,13 +1,13 @@
 package cz.rimu.interestingflights.domain.repository
 
-import cz.rimu.interestingflights.domain.entity.FlightDomainEntities
+import cz.rimu.interestingflights.domain.model.FlightDomain
 
 interface FlightsRepository {
     suspend fun getFlights(
         startDate: String,
         endDate: String
-    ): FlightDomainEntities
+    ): FlightDomain
 
-    suspend fun getViewedFlights(): List<FlightDomainEntities.FlightDomainItem>
-    suspend fun saveFlights(flights: List<FlightDomainEntities.FlightDomainItem>)
+    suspend fun getViewedFlights(): List<FlightDomain.FlightDomainItem>
+    suspend fun saveFlights(flights: List<FlightDomain.FlightDomainItem>)
 }

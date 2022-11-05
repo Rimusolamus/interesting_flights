@@ -1,6 +1,6 @@
 package cz.rimu.interestingflights.data.remote.service
 
-import cz.rimu.interestingflights.data.remote.entity.FlightResponse
+import cz.rimu.interestingflights.data.remote.model.FlightData
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -30,5 +30,5 @@ interface ApiService {
         @Query("adults") adults: String = "1",
         @Query("limit") limit: String = "45",
         @Query("partner") partner: String = "skypicker-android",
-    ): Response<FlightResponse>
+    ): Response<FlightData>
 }
