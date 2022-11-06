@@ -2,7 +2,7 @@ package cz.rimu.interestingflights.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import cz.rimu.interestingflights.data.local.dao.ViewedFlightsDao
+import cz.rimu.interestingflights.data.local.dao.FlightsDao
 import cz.rimu.interestingflights.domain.model.FlightDomain
 
 @Database(
@@ -12,5 +12,5 @@ import cz.rimu.interestingflights.domain.model.FlightDomain
 )
 
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun viewedFlightsDao(): ViewedFlightsDao
+    abstract fun viewedFlightsDao(): FlightsDao
 }

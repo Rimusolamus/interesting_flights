@@ -17,6 +17,6 @@ object Constants {
     const val BASE_URL = "https://api.skypicker.com/"
 
     //GEO IP BASE URL
-    const val GEO_IP_BASE_URL = "https://ipinfo.io/json"
+    const val GEO_IP_URL = "https://ipinfo.io/json"
 
 }

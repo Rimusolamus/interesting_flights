@@ -1,7 +1,7 @@
 package cz.rimu.interestingflights.data.di
 
-import cz.rimu.interestingflights.data.local.datasource.ViewedFlightsLocalDataSource
-import cz.rimu.interestingflights.data.remote.datasource.FlightsRemoteDataSourceImpl
+import cz.rimu.interestingflights.data.local.data.FlightsLocalDataSource
+import cz.rimu.interestingflights.data.remote.data.FlightsRemoteDataSourceImpl
 import cz.rimu.interestingflights.data.remote.service.ApiService
 import cz.rimu.interestingflights.data.repository.FlightsRepositoryImpl
 import cz.rimu.interestingflights.domain.repository.FlightsRepository
@@ -22,7 +22,7 @@ class RepositoryModule {
     @Provides
     fun provideFlightsRepository(
         remoteDataSource: FlightsRemoteDataSourceImpl,
-        viewedFlightsLocalDataSource: ViewedFlightsLocalDataSource
+        viewedFlightsLocalDataSource: FlightsLocalDataSource
     ): FlightsRepository {
         return FlightsRepositoryImpl(
             remoteDataSource,

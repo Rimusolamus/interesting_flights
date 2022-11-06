@@ -1,4 +1,4 @@
-package cz.rimu.interestingflights.data.remote.datasource
+package cz.rimu.interestingflights.data.remote.data
 
 import cz.rimu.interestingflights.data.constant.NetworkStatus
 import cz.rimu.interestingflights.data.remote.model.FlightData

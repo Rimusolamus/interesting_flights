@@ -18,17 +18,12 @@ class FiveInterestingFlightsUseCase @Inject constructor(
     suspend operator fun invoke(startDate: Date): FlightDomain =
         withContext(coroutineDispatcher) {
             val result = flightsRepository.getFlights(
-                startDate = startDate.toString(Constants.DD_MM_YYYY_FORMAT),
+                startDate = startDate.addDaysToDate(1).toString(Constants.DD_MM_YYYY_FORMAT),
                 endDate = startDate.addDaysToDate(1).toString(Constants.DD_MM_YYYY_FORMAT)
             )
             return@withContext if (result is FlightDomain.FlightDomainEntity) {
-                val viewedFlights = flightsRepository.getViewedFlights()
-                val filteredFlights = result.flights.filter {
-                    it.retrievalDate in viewedFlights.map { item -> item.retrievalDate }
-                        || it.id !in viewedFlights.map { item -> item.id }
-                }.take(5)
-                flightsRepository.saveFlights(filteredFlights)
-                FlightDomain.FlightDomainEntity(filteredFlights)
+                flightsRepository.saveFlights(result.flights)
+                FlightDomain.FlightDomainEntity(result.flights)
             } else {
                 result
             }

@@ -50,7 +50,11 @@ fun FlightsScreen(
         FullScreenProgressBar(state.inProgress)
 
         if (!state.inProgress) {
-            SetContentList(state.flights, it)
+            if(state.flights.isEmpty()) {
+                FullScreenNoDataView(stringResource(R.string.no_data_screen))
+            } else {
+                SetContentList(state.flights, it)
+            }
         }
 
         if (state.errorMessage.isNotEmpty()) {

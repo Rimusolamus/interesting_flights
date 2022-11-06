@@ -2,9 +2,9 @@ package cz.rimu.interestingflights.data.repository
 
 import com.squareup.moshi.Moshi
 import cz.rimu.interestingflights.data.constant.Constants.GENERAL_ERROR
-import cz.rimu.interestingflights.data.constant.Constants.GEO_IP_BASE_URL
-import cz.rimu.interestingflights.data.local.datasource.ViewedFlightsLocalDataSource
-import cz.rimu.interestingflights.data.remote.datasource.FlightsRemoteDataSourceImpl
+import cz.rimu.interestingflights.data.constant.Constants.GEO_IP_URL
+import cz.rimu.interestingflights.data.local.data.FlightsLocalDataSource
+import cz.rimu.interestingflights.data.remote.data.FlightsRemoteDataSourceImpl
 import cz.rimu.interestingflights.data.remote.model.Flight
 import cz.rimu.interestingflights.data.remote.model.GeoIp
 import cz.rimu.interestingflights.data.utils.getStringDate
@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 class FlightsRepositoryImpl @Inject constructor(
     private val flightsRemoteDataSourceImpl: FlightsRemoteDataSourceImpl,
-    private val viewedFlightsLocalDataSource: ViewedFlightsLocalDataSource
+    private val viewedFlightsLocalDataSource: FlightsLocalDataSource
 ) : FlightsRepository {
 
     override suspend fun getFlights(
@@ -68,8 +68,6 @@ class FlightsRepositoryImpl @Inject constructor(
             mapIdto = flight.mapIdto ?: "",
         )
 
-    override suspend fun getViewedFlights() = viewedFlightsLocalDataSource.viewedFlights()
-
     override suspend fun saveFlights(flights: List<FlightDomain.FlightDomainItem>) =
         viewedFlightsLocalDataSource.saveFlights(flights)
 
@@ -81,7 +79,7 @@ class FlightsRepositoryImpl @Inject constructor(
             try {
                 val client = OkHttpClient()
                 val request = Request.Builder()
-                    .url(GEO_IP_BASE_URL)
+                    .url(GEO_IP_URL)
                     .build()
                 val response = client.newCall(request).execute()
                 val geoIp = Moshi.Builder().build().adapter(GeoIp::class.java)
@@ -91,6 +89,7 @@ class FlightsRepositoryImpl @Inject constructor(
                     "-"
                 ) + "-100km"
             } catch (e: Exception) {
+                // not getting location is not a big deal
                 "49.2-16.61-250km"
             }
         }

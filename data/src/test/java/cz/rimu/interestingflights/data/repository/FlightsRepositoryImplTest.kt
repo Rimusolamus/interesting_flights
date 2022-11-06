@@ -1,8 +1,8 @@
 package cz.rimu.interestingflights.data.repository
 
 import cz.rimu.interestingflights.data.constant.Constants.CONNECT_EXCEPTION
-import cz.rimu.interestingflights.data.local.datasource.ViewedFlightsLocalDataSource
-import cz.rimu.interestingflights.data.remote.datasource.FlightsRemoteDataSourceImpl
+import cz.rimu.interestingflights.data.local.data.FlightsLocalDataSource
+import cz.rimu.interestingflights.data.remote.data.FlightsRemoteDataSourceImpl
 import cz.rimu.interestingflights.data.remote.model.FlightData
 import cz.rimu.interestingflights.domain.model.FlightDomain
 import io.mockk.*
@@ -14,7 +14,7 @@ import org.junit.Test
 class FlightsRepositoryImplTest {
 
     private val flightsRemoteDataSourceImpl: FlightsRemoteDataSourceImpl = mockk(relaxed = true)
-    private val viewedFlightsLocalDataSource: ViewedFlightsLocalDataSource = mockk(relaxed = true)
+    private val viewedFlightsLocalDataSource: FlightsLocalDataSource = mockk(relaxed = true)
     private val flightsRepositoryImpl =
         FlightsRepositoryImpl(
             flightsRemoteDataSourceImpl,
