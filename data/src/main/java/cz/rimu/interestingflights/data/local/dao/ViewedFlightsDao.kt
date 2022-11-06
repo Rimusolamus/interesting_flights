@@ -17,4 +17,6 @@ interface ViewedFlightsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun savedViewedFlights(flights: List<FlightDomain.FlightDomainItem>)
 
+    @Query("DELETE FROM viewedFlightsTable")
+    suspend fun deleteAllFlights()
 }

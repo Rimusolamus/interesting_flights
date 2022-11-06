@@ -25,6 +25,9 @@ class FlightsRepositoryImpl @Inject constructor(
             return FlightDomain.FlightDomainEntity(localFlights)
         }
 
+        // clear all flights from local db as we don't need any from yesterday
+        viewedFlightsLocalDataSource.deleteAllFlights()
+
         val response = flightsRemoteDataSourceImpl.getFlights(startDate, endDate)
 
         return response.data?.flight?.let { flights ->
@@ -53,12 +56,16 @@ class FlightsRepositoryImpl @Inject constructor(
                 (it?.times(1000))?.getStringDate(Constants.DD_MM_YYYY_HH_mm_FORMAT)
                     ?: ""
             }),
-            retrievalDate = startDate
+            retrievalDate = startDate,
+            mapIdto = flight.mapIdto ?: "",
         )
 
     override suspend fun getViewedFlights() = viewedFlightsLocalDataSource.viewedFlights()
 
     override suspend fun saveFlights(flights: List<FlightDomain.FlightDomainItem>) =
         viewedFlightsLocalDataSource.saveFlights(flights)
+
+    override suspend fun deleteAllFlights() =
+        viewedFlightsLocalDataSource.deleteAllFlights()
 }
 

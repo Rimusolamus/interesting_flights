@@ -2,7 +2,7 @@ package cz.rimu.interestingflights.presentation.viewmodel
 
 import cz.rimu.interestingflights.domain.model.FlightDomain
 import cz.rimu.interestingflights.domain.usecase.FiveInterestingFlightsUseCase
-import cz.rimu.interestingflights.entity.FlightsState
+import cz.rimu.interestingflights.model.FlightsState
 import cz.rimu.interestingflights.viewmodel.FlightsViewModel
 import io.mockk.coEvery
 import io.mockk.mockk

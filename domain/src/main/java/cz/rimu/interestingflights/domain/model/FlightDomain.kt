@@ -22,6 +22,7 @@ sealed class FlightDomain {
         val arrivalTime: String,
         val departureTime: String,
         val retrievalDate: String,
+        val mapIdto: String
         )
 
     data class Failure(val errorText: String) : FlightDomain()

@@ -15,4 +15,8 @@ class ViewedFlightsLocalDataSource @Inject constructor(private val viewedFlights
     suspend fun viewedFlightsByDate(startDate: String): List<FlightDomain.FlightDomainItem> {
         return viewedFlightsDao.viewedFlightsByDate(startDate)
     }
+
+    suspend fun deleteAllFlights() {
+        viewedFlightsDao.deleteAllFlights()
+    }
 }

@@ -19,7 +19,7 @@ class FiveInterestingFlightsUseCase @Inject constructor(
         withContext(coroutineDispatcher) {
             val result = flightsRepository.getFlights(
                 startDate = startDate.toString(Constants.DD_MM_YYYY_FORMAT),
-                endDate = startDate.addDaysToDate(30).toString(Constants.DD_MM_YYYY_FORMAT)
+                endDate = startDate.addDaysToDate(1).toString(Constants.DD_MM_YYYY_FORMAT)
             )
             return@withContext if (result is FlightDomain.FlightDomainEntity) {
                 val viewedFlights = flightsRepository.getViewedFlights()

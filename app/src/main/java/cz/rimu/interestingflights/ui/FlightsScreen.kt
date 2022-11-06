@@ -1,11 +1,13 @@
 package cz.rimu.interestingflights.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -17,14 +19,18 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
 import cz.rimu.interestingflights.R
 import cz.rimu.interestingflights.domain.model.FlightDomain
 import cz.rimu.interestingflights.viewmodel.FlightsViewModel
 import kiwi.orbit.compose.icons.Icons
+import kiwi.orbit.compose.ui.OrbitTheme
 import kiwi.orbit.compose.ui.controls.Card
 import kiwi.orbit.compose.ui.controls.Scaffold
 import kiwi.orbit.compose.ui.controls.Text
@@ -78,6 +84,7 @@ fun SetContentList(
     }
 }
 
+@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun FlightCard(flight: FlightDomain.FlightDomainItem) {
     Card(
@@ -92,6 +99,14 @@ fun FlightCard(flight: FlightDomain.FlightDomainItem) {
             verticalArrangement = Arrangement.spacedBy(10.dp)
 
         ) {
+            GlideImage(
+                model = stringResource(R.string.image_url, flight.mapIdto),
+                contentScale = ContentScale.FillWidth,
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(OrbitTheme.colors.primary.normalAlt)
+            )
 
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(painter = Icons.AirplaneTakeoff, contentDescription = "")

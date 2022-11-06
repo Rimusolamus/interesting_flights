@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Interesting flights</string>
-    <string name="all_flights_screen">Interesting Flights</string>
+    <string name="all_flights_screen">Routes to evacuate tomorrow</string>
+    <string name="image_url">https://images.kiwi.com/photos/600x330/%1$s.jpg</string>
 </resources>

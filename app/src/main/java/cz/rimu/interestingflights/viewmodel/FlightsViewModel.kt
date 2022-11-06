@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cz.rimu.interestingflights.domain.model.FlightDomain
 import cz.rimu.interestingflights.domain.usecase.FiveInterestingFlightsUseCase
-import cz.rimu.interestingflights.entity.FlightsState
+import cz.rimu.interestingflights.model.FlightsState
 import cz.rimu.interestingflights.util.getCurrentDateTime
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,7 +19,13 @@ class FlightsViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(FlightsState())
-    val uiState: StateFlow<FlightsState> = _uiState
+
+    val uiState: StateFlow<FlightsState>
+        get() = _uiState
+
+    init {
+        getFlightsOffers()
+    }
 
     fun getFlightsOffers(startDate: Date = getCurrentDateTime()) {
         viewModelScope.launch {

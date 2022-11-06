@@ -10,4 +10,5 @@ interface FlightsRepository {
 
     suspend fun getViewedFlights(): List<FlightDomain.FlightDomainItem>
     suspend fun saveFlights(flights: List<FlightDomain.FlightDomainItem>)
+    suspend fun deleteAllFlights()
 }

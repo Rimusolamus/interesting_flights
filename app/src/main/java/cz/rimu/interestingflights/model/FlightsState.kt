@@ -1,4 +1,4 @@
-package cz.rimu.interestingflights.entity
+package cz.rimu.interestingflights.model
 
 import cz.rimu.interestingflights.domain.model.FlightDomain
 

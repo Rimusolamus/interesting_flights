@@ -37,8 +37,8 @@ class FlightsRepositoryImplTest {
                     "EUR",
                     "26/10/2022 22:30",
                     "26/10/2022 03:30",
-                    "20/10/2022"
-
+                    "20/10/2022",
+                    "london_gb"
                 ),
                 FlightDomain.FlightDomainItem(
                     "2",
@@ -51,6 +51,7 @@ class FlightsRepositoryImplTest {
                     "07/11/2022 11:30",
                     "07/11/2022 08:30",
                     "20/10/2022",
+                    "london_gb"
                 ),
                 FlightDomain.FlightDomainItem(
                     "3",
@@ -63,6 +64,7 @@ class FlightsRepositoryImplTest {
                     "08/11/2022 15:30",
                     "08/11/2022 13:00",
                     "20/10/2022",
+                    "london_gb"
                 ),
                 FlightDomain.FlightDomainItem(
                     "4",
@@ -75,6 +77,7 @@ class FlightsRepositoryImplTest {
                     "08/11/2022 15:00",
                     "08/11/2022 13:00",
                     "20/10/2022",
+                    "london_gb"
                 ),
                 FlightDomain.FlightDomainItem(
                     "5",
@@ -87,6 +90,7 @@ class FlightsRepositoryImplTest {
                     "07/11/2022 11:30",
                     "07/11/2022 08:30",
                     "20/10/2022",
+                    "london_gb"
                 )
             )
 
@@ -98,64 +102,6 @@ class FlightsRepositoryImplTest {
             )
         }
     }
-
-    // @Test
-    // fun `test flightsRepository returns flightsDomainEntity from flightsRemoteDataSourceImpl has success response`() {
-    //
-    //     val flightsResponse: cz.rimu.interestingflights.data.constant.NetworkStatus<FlightData> =
-    //         cz.rimu.interestingflights.data.constant.NetworkStatus.Success(
-    //             FlightData(
-    //                 listOf(
-    //                     Flight(
-    //                         id = "1",
-    //                         flyDuration = "19h 45m",
-    //                         distance = 8459.46,
-    //                         cityFrom = "Vienna",
-    //                         flyFrom = "VIE",
-    //                         cityTo = "Bangkok",
-    //                         flyTo = "BKK",
-    //                         price = 343L,
-    //                         aTime = 1667485800,
-    //                         dTime = 1667393100
-    //                     )
-    //                 ), currency = "EUR"
-    //             )
-    //
-    //         )
-    //
-    //
-    //     val flightDomainEntity = FlightDomain.FlightDomainEntity(
-    //         listOf(
-    //             FlightDomain.FlightDomainItem(
-    //                 "1",
-    //                 "Vienna (VIE)",
-    //                 "Bangkok (BKK)",
-    //                 "19h 45m",
-    //                 "8459.46 KM",
-    //                 343L,
-    //                 "EUR",
-    //                 "03/11/2022 16:30",
-    //                 "02/11/2022 14:45",
-    //                 "20/10/2022"
-    //             )
-    //
-    //         )
-    //     )
-    //
-    //     runBlocking {
-    //         coEvery {
-    //             flightsRemoteDataSourceImpl.getFlights(
-    //                 startDate,
-    //                 endDate
-    //             )
-    //         } returns flightsResponse
-    //         Assert.assertEquals(
-    //             flightDomainEntity,
-    //             flightsRepositoryImpl.getFlights(startDate, endDate),
-    //         )
-    //     }
-    //
-    // }
 
     @Test
     fun `test VehicleResponse Connection failed response should return Failure`() {
@@ -188,8 +134,8 @@ class FlightsRepositoryImplTest {
                 "EUR",
                 "26/10/2022 22:30",
                 "26/10/2022 03:30",
-                "26/10/2022"
-
+                "26/10/2022",
+                "london_gb"
             ),
             FlightDomain.FlightDomainItem(
                 "2",
@@ -202,6 +148,7 @@ class FlightsRepositoryImplTest {
                 "07/11/2022 11:30",
                 "07/11/2022 08:30",
                 "26/10/2022",
+                "london_gb"
             ),
             FlightDomain.FlightDomainItem(
                 "3",
@@ -214,6 +161,7 @@ class FlightsRepositoryImplTest {
                 "08/11/2022 15:30",
                 "08/11/2022 13:00",
                 "26/10/2022",
+                "london_gb"
             ),
             FlightDomain.FlightDomainItem(
                 "4",
@@ -226,6 +174,7 @@ class FlightsRepositoryImplTest {
                 "08/11/2022 15:00",
                 "08/11/2022 13:00",
                 "26/10/2022",
+                "london_gb"
             ),
             FlightDomain.FlightDomainItem(
                 "5",
@@ -238,6 +187,7 @@ class FlightsRepositoryImplTest {
                 "07/11/2022 11:30",
                 "07/11/2022 08:30",
                 "26/10/2022",
+                "london_gb"
             )
         )
 
