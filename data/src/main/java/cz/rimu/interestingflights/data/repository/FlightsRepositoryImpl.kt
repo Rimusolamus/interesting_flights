@@ -27,7 +27,7 @@ class FlightsRepositoryImpl @Inject constructor(
 
         val response = flightsRemoteDataSourceImpl.getFlights(startDate, endDate)
 
-        return response.data?.flight?.let { flights ->
+        return response.data?.data?.let { flights ->
             FlightDomain.FlightDomainEntity(
                 (flights.map {
                     getFlightDomainItem(it, response.data.currency, startDate)

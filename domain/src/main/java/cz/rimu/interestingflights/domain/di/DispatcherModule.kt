@@ -1,6 +1,5 @@
 package cz.rimu.interestingflights.domain.di
 
-import cz.rimu.interestingflights.domain.repository.FlightsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

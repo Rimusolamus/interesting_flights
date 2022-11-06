@@ -7,7 +7,7 @@ data class FlightData(
     @Json(name = "search_id") var searchId: List<Flight>,
     @Json(name = "currency") var currency: String? = null,
     @Json(name = "fx_rate") var fxRate: Int? = null,
-    @Json(name = "data") val flight: List<Flight> = arrayListOf(),
+    val data: List<Flight> = arrayListOf(),
     @Json(name = "_results") var Results: Int? = null,
     @Json(name = "best_results") var bestResults: List<String> = arrayListOf(),
     @Json(name = "search_params") var searchParams: SearchParams? = SearchParams(),
