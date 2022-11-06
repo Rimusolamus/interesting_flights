@@ -1,2 +1,2 @@
-Kiwi homework
-todo: add some exp
+using Kiwi API get 5 interesting flights for tomorrow
+compose, clean-ish architecture, coroutines, hilt

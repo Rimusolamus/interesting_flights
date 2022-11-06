@@ -2,6 +2,7 @@ package cz.rimu.interestingflights.data.repository
 
 import com.squareup.moshi.Moshi
 import cz.rimu.interestingflights.data.constant.Constants.GENERAL_ERROR
+import cz.rimu.interestingflights.data.constant.Constants.GEO_IP_BASE_URL
 import cz.rimu.interestingflights.data.local.datasource.ViewedFlightsLocalDataSource
 import cz.rimu.interestingflights.data.remote.datasource.FlightsRemoteDataSourceImpl
 import cz.rimu.interestingflights.data.remote.model.Flight
@@ -14,7 +15,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import java.net.URL
 import javax.inject.Inject
 
 class FlightsRepositoryImpl @Inject constructor(
@@ -75,12 +75,13 @@ class FlightsRepositoryImpl @Inject constructor(
 
     override suspend fun deleteAllFlights() = viewedFlightsLocalDataSource.deleteAllFlights()
 
+    // temporary solution to get location
     private suspend fun getLocation(): String {
         return withContext(Dispatchers.IO) {
             try {
                 val client = OkHttpClient()
                 val request = Request.Builder()
-                    .url("https://ipinfo.io/json")
+                    .url(GEO_IP_BASE_URL)
                     .build()
                 val response = client.newCall(request).execute()
                 val geoIp = Moshi.Builder().build().adapter(GeoIp::class.java)
