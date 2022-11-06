@@ -28,7 +28,7 @@ interface ApiService {
         @Query("oneforcity") oneForCity: String = "1",
         @Query("wait_for_refresh") waitForRefresh: String = "0",
         @Query("adults") adults: String = "1",
-        @Query("limit") limit: String = "45",
+        @Query("limit") limit: String = "5",
         @Query("partner") partner: String = "skypicker-android",
     ): Response<FlightData>
 }

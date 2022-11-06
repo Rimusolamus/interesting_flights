@@ -1,7 +1,7 @@
 package cz.rimu.interestingflights.domain.usecase
 
 import cz.rimu.interestingflights.domain.model.FlightDomain
-import cz.rimu.interestingflights.data.repository.FlightsRepository
+import cz.rimu.interestingflights.domain.repository.FlightsRepository
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -16,7 +16,7 @@ import java.util.*
 @OptIn(ExperimentalCoroutinesApi::class)
 class FlightOffersUseCaseTest {
 
-    private val flightsRepository: cz.rimu.interestingflights.data.repository.FlightsRepository = mockk(relaxed = true)
+    private val flightsRepository: FlightsRepository = mockk(relaxed = true)
 
     private val testDispatcher = UnconfinedTestDispatcher()
     private val flightOffersUseCase = FiveInterestingFlightsUseCase(
@@ -50,8 +50,8 @@ class FlightOffersUseCaseTest {
                     "EUR",
                     "26/10/2022 22:30",
                     "26/10/2022 03:30",
-                    "26/10/2022"
-
+                    "26/10/2022",
+                    "london_gb"
                 ),
                 FlightDomain.FlightDomainItem(
                     "2",
@@ -64,6 +64,7 @@ class FlightOffersUseCaseTest {
                     "07/11/2022 11:30",
                     "07/11/2022 08:30",
                     "26/10/2022",
+                    "london_gb"
                 ),
                 FlightDomain.FlightDomainItem(
                     "3",
@@ -76,6 +77,7 @@ class FlightOffersUseCaseTest {
                     "08/11/2022 15:30",
                     "08/11/2022 13:00",
                     "26/10/2022",
+                    "london_gb"
                 ),
                 FlightDomain.FlightDomainItem(
                     "4",
@@ -88,6 +90,7 @@ class FlightOffersUseCaseTest {
                     "08/11/2022 15:00",
                     "08/11/2022 13:00",
                     "26/10/2022",
+                    "london_gb"
                 ),
                 FlightDomain.FlightDomainItem(
                     "5",
@@ -100,6 +103,7 @@ class FlightOffersUseCaseTest {
                     "07/11/2022 11:30",
                     "07/11/2022 08:30",
                     "26/10/2022",
+                    "london_gb"
                 ), FlightDomain.FlightDomainItem(
                     "6",
                     "Vienna (VIE)",
@@ -111,6 +115,7 @@ class FlightOffersUseCaseTest {
                     "07/11/2022 22:05",
                     "07/11/2022 13:35",
                     "26/10/2022",
+                    "london_gb"
                 ), FlightDomain.FlightDomainItem(
                     "7",
                     "Katowice (KTW)",
@@ -121,7 +126,8 @@ class FlightOffersUseCaseTest {
                     "EUR",
                     "16/11/2022 00:00",
                     "15/11/2022 13:15",
-                    "26/10/2022"
+                    "26/10/2022",
+                    "london_gb"
                 )
             )
 
@@ -140,8 +146,8 @@ class FlightOffersUseCaseTest {
                     "EUR",
                     "26/10/2022 22:30",
                     "26/10/2022 03:30",
-                    "26/10/2022"
-
+                    "26/10/2022",
+                    "london_gb"
                 ),
                 FlightDomain.FlightDomainItem(
                     "2",
@@ -154,6 +160,7 @@ class FlightOffersUseCaseTest {
                     "07/11/2022 11:30",
                     "07/11/2022 08:30",
                     "26/10/2022",
+                    "london_gb"
                 ),
                 FlightDomain.FlightDomainItem(
                     "3",
@@ -166,6 +173,7 @@ class FlightOffersUseCaseTest {
                     "08/11/2022 15:30",
                     "08/11/2022 13:00",
                     "26/10/2022",
+                    "london_gb"
                 ),
                 FlightDomain.FlightDomainItem(
                     "4",
@@ -178,6 +186,7 @@ class FlightOffersUseCaseTest {
                     "08/11/2022 15:00",
                     "08/11/2022 13:00",
                     "26/10/2022",
+                    "london_gb"
                 ),
                 FlightDomain.FlightDomainItem(
                     "5",
@@ -190,6 +199,7 @@ class FlightOffersUseCaseTest {
                     "07/11/2022 11:30",
                     "07/11/2022 08:30",
                     "26/10/2022",
+                    "london_gb"
                 )
             )
 
