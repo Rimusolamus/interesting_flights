@@ -4,71 +4,58 @@ import com.squareup.moshi.Json
 
 data class Flight(
 
-    val id: String,
-    val flyFrom: String,
-    val flyTo: String,
-    val cityFrom: String,
-    val cityCodeFrom: String,
-    val cityTo: String,
-    val cityCodeTo: String,
-    val countryFrom: Country,
-    val countryTo: Country,
-    val dTime: Long,
-    val dTimeUTC: Long,
-    val aTime: Long,
-    val aTimeUTC: Long,
+    val id: String? = null,
+    val flyFrom: String? = null,
+    val flyTo: String? = null,
+    val cityFrom: String? = null,
+    val cityCodeFrom: String? = null,
+    val cityTo: String? = null,
+    val cityCodeTo: String? = null,
+    val countryFrom: Country? = null,
+    val countryTo: Country? = null,
+    val dTime: Long? = null,
+    val dTimeUTC: Long? = null,
+    val aTime: Long? = null,
+    val aTimeUTC: Long? = null,
     val nightsInDest: Any? = null,
-    val quality: Double,
-    val popularity: Long,
-    val distance: Double,
-    val duration: Duration,
+    val quality: Double? = null,
+    val popularity: Long? = null,
+    val distance: Double? = null,
 
-    @Json(name = "fly_duration")
-    val flyDuration: String,
+    @field:Json(name = "fly_duration") val flyDuration: String,
 
-    val price: Long,
-    val conversion: Conversion,
+    val price: Long? = null,
+    val conversion: Conversion? = null,
 
-    @Json(name = "bags_price")
-    val bagsPrice: BagsPrice,
+    @field:Json(name = "bags_price") val bagsPrice: BagsPrice,
 
-    val baglimit: Map<String, Long>,
-    val availability: Availability,
-    val airlines: List<String>,
-    val route: List<Route>,
+    val baglimit: Map<String, Long>? = null,
+    val availability: Availability? = null,
+    val airlines: List<String>? = null,
+    val route: List<Route>? = null,
 
-    @Json(name = "booking_token")
-    val bookingToken: String,
+    @field:Json(name = "booking_token") val bookingToken: String,
 
-    @Json(name = "deep_link")
-    val deepLink: String,
+    @field:Json(name = "deep_link") val deepLink: String,
 
-    @Json(name = "tracking_pixel")
-    val trackingPixel: String,
+    @field:Json(name = "tracking_pixel") val trackingPixel: String,
 
-    @Json(name = "facilitated_booking_available")
-    val facilitatedBookingAvailable: Boolean,
+    @field:Json(name = "facilitated_booking_available") val facilitatedBookingAvailable: Boolean,
 
-    @Json(name = "pnr_count")
-    val pnrCount: Long,
+    @field:Json(name = "pnr_count") val pnrCount: Long,
 
-    @Json(name = "has_airport_change")
-    val hasAirportChange: Boolean,
+    @field:Json(name = "has_airport_change") val hasAirportChange: Boolean,
 
-    @Json(name = "technical_stops")
-    val technicalStops: Long,
+    @field:Json(name = "technical_stops") val technicalStops: Long,
 
-    @Json(name = "throw_away_ticketing")
-    val throwAwayTicketing: Boolean,
+    @field:Json(name = "throw_away_ticketing") val throwAwayTicketing: Boolean,
 
-    @Json(name = "hidden_city_ticketing")
-    val hiddenCityTicketing: Boolean,
+    @field:Json(name = "hidden_city_ticketing") val hiddenCityTicketing: Boolean,
 
-    @Json(name = "virtual_interlining")
-    val virtualInterlining: Boolean,
+    @field:Json(name = "virtual_interlining") val virtualInterlining: Boolean,
 
-    val mapIdfrom: String,
-    val mapIdto: String,
-    val hashtags: List<String>
+    val mapIdfrom: String? = null,
+    val mapIdto: String? = null,
+    val hashtags: List<String>? = null
 
 )

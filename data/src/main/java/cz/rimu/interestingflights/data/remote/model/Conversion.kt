@@ -4,6 +4,6 @@ import com.squareup.moshi.Json
 
 data class Conversion(
 
-    @Json(name = "EUR") var EUR: Int? = null
+    @field:Json(name = "EUR") var EUR: Int? = null
 
 )

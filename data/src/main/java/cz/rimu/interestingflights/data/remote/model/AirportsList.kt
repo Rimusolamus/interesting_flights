@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 data class AirportsList(
 
-    @Json(name = "filterName") var filterName: String? = null,
-    @Json(name = "name") var name: String? = null
+    @field:Json(name = "filterName") var filterName: String? = null,
+    @field:Json(name = "name") var name: String? = null
 
 )

@@ -4,8 +4,8 @@ import com.squareup.moshi.Json
 
 data class SearchParams(
 
-    @Json(name = "flyFrom_type") var flyFromType: String? = null,
-    @Json(name = "to_type") var toType: String? = null,
-    @Json(name = "seats") var seats: Seats? = Seats()
+    @field:Json(name = "flyFrom_type") var flyFromType: String? = null,
+    @field:Json(name = "to_type") var toType: String? = null,
+    @field:Json(name = "seats") var seats: Seats? = Seats()
 
 )

@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 data class Hashtags (
 
-  @Json(name="count" ) var count : Int?    = null,
-  @Json(name="name"  ) var name  : String? = null
+  @field:Json(name="count" ) var count : Int?    = null,
+  @field:Json(name="name"  ) var name  : String? = null
 
 )

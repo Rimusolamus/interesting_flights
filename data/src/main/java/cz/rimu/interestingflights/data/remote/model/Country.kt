@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 data class Country(
 
-    @Json(name = "code") var code: String? = null,
-    @Json(name = "name") var name: String? = null
+    @field:Json(name = "code") var code: String? = null,
+    @field:Json(name = "name") var name: String? = null
 
 )

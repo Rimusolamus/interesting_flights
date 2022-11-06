@@ -4,6 +4,6 @@ import com.squareup.moshi.Json
 
 data class BagsPrice(
 
-    @Json(name = "hand") var hand: Int? = null
+    @field:Json(name = "hand") var hand: Float? = null
 
 )

@@ -16,5 +16,4 @@ object Constants {
     //Network BASE URL
     const val BASE_URL = "https://api.skypicker.com/"
 
-
 }

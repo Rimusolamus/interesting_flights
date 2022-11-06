@@ -27,7 +27,7 @@ class FlightsRepositoryImpl @Inject constructor(
 
         val response = flightsRemoteDataSourceImpl.getFlights(startDate, endDate)
 
-        return response.data?.data?.let { flights ->
+        return response.data?.flight?.let { flights ->
             FlightDomain.FlightDomainEntity(
                 (flights.map {
                     getFlightDomainItem(it, response.data.currency, startDate)
@@ -43,23 +43,22 @@ class FlightsRepositoryImpl @Inject constructor(
             id = flight.id ?: "-1",
             from = "${flight.cityFrom ?: ""} (${flight.flyFrom ?: ""})",
             to = "${flight.cityTo ?: ""} (${flight.flyTo ?: ""})",
-            flyDuration = flight.flyDuration ?: "",
+            flyDuration = flight.flyDuration,
             distance = "${flight.distance ?: 0} KM",
-            price = flight.price,
+            price = flight.price ?: 0L,
             currency = currency ?: "EUR",
-            departureTime = flight.dTime.let { (it * 1000).getStringDate(Constants.DD_MM_YYYY_HH_mm_FORMAT) }
+            departureTime = flight.dTime.let { (it?.times(1000))?.getStringDate(Constants.DD_MM_YYYY_HH_mm_FORMAT) }
                 ?: "",
-            arrivalTime = flight.aTime.let { (it * 1000).getStringDate(Constants.DD_MM_YYYY_HH_mm_FORMAT) }
-                ?: "",
+            arrivalTime = (flight.aTime.let {
+                (it?.times(1000))?.getStringDate(Constants.DD_MM_YYYY_HH_mm_FORMAT)
+                    ?: ""
+            }),
             retrievalDate = startDate
         )
-
 
     override suspend fun getViewedFlights() = viewedFlightsLocalDataSource.viewedFlights()
 
     override suspend fun saveFlights(flights: List<FlightDomain.FlightDomainItem>) =
         viewedFlightsLocalDataSource.saveFlights(flights)
-
-
 }
 
