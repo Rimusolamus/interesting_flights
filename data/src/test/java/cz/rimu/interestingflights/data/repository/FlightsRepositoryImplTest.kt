@@ -112,14 +112,14 @@ class FlightsRepositoryImplTest {
             coEvery {
                 flightsRemoteDataSourceImpl.getFlights(
                     startDate,
-                    endDate
+                    endDate,
+                    "49.2-16.61-250km"
                 )
             } returns flightFailedResponse
             val actual = flightsRepositoryImpl.getFlights(startDate, endDate)
             Assert.assertEquals(expected, actual)
         }
     }
-
 
     @Test
     fun `test viewedFlightsLocalDataSource saveFlights is called  from flightsRepository`() {

@@ -6,11 +6,12 @@ import cz.rimu.interestingflights.data.remote.service.ApiService
 import cz.rimu.interestingflights.data.utils.safeApiCall
 
 class FlightsRemoteDataSourceImpl(private val apiService: ApiService) {
-    suspend fun getFlights(startDate: String, endDate: String): NetworkStatus<FlightData> =
+    suspend fun getFlights(startDate: String, endDate: String, location: String): NetworkStatus<FlightData> =
         safeApiCall {
             apiService.getFlights(
                 dateFrom = startDate,
-                dateTo = endDate
+                dateTo = endDate,
+                flyFrom = location
             )
         }
 }
