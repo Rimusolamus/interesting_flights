@@ -14,7 +14,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DataBaseModule {
-    private const val DATABASE_NAME = "vehicle"
+    private const val DATABASE_NAME = "interestingFlights"
 
     @Singleton
     @Provides
