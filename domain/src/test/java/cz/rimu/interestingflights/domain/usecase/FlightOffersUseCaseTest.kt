@@ -51,7 +51,8 @@ class FlightOffersUseCaseTest {
                     "26/10/2022 22:30",
                     "26/10/2022 03:30",
                     "26/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com"
                 ),
                 FlightDomain.FlightDomainItem(
                     "2",
@@ -64,7 +65,8 @@ class FlightOffersUseCaseTest {
                     "07/11/2022 11:30",
                     "07/11/2022 08:30",
                     "26/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com"
                 ),
                 FlightDomain.FlightDomainItem(
                     "3",
@@ -77,7 +79,8 @@ class FlightOffersUseCaseTest {
                     "08/11/2022 15:30",
                     "08/11/2022 13:00",
                     "26/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com"
                 ),
                 FlightDomain.FlightDomainItem(
                     "4",
@@ -90,7 +93,8 @@ class FlightOffersUseCaseTest {
                     "08/11/2022 15:00",
                     "08/11/2022 13:00",
                     "26/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com"
                 ),
                 FlightDomain.FlightDomainItem(
                     "5",
@@ -103,7 +107,8 @@ class FlightOffersUseCaseTest {
                     "07/11/2022 11:30",
                     "07/11/2022 08:30",
                     "26/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com"
                 ), FlightDomain.FlightDomainItem(
                     "6",
                     "Vienna (VIE)",
@@ -115,7 +120,8 @@ class FlightOffersUseCaseTest {
                     "07/11/2022 22:05",
                     "07/11/2022 13:35",
                     "26/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com"
                 ), FlightDomain.FlightDomainItem(
                     "7",
                     "Katowice (KTW)",
@@ -127,12 +133,12 @@ class FlightOffersUseCaseTest {
                     "16/11/2022 00:00",
                     "15/11/2022 13:15",
                     "26/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com"
                 )
             )
 
         )
-
 
         val filteredFlights = FlightDomain.FlightDomainEntity(
             listOf(
@@ -147,7 +153,8 @@ class FlightOffersUseCaseTest {
                     "26/10/2022 22:30",
                     "26/10/2022 03:30",
                     "26/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com"
                 ),
                 FlightDomain.FlightDomainItem(
                     "2",
@@ -160,7 +167,8 @@ class FlightOffersUseCaseTest {
                     "07/11/2022 11:30",
                     "07/11/2022 08:30",
                     "26/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com"
                 ),
                 FlightDomain.FlightDomainItem(
                     "3",
@@ -173,7 +181,8 @@ class FlightOffersUseCaseTest {
                     "08/11/2022 15:30",
                     "08/11/2022 13:00",
                     "26/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com"
                 ),
                 FlightDomain.FlightDomainItem(
                     "4",
@@ -186,7 +195,8 @@ class FlightOffersUseCaseTest {
                     "08/11/2022 15:00",
                     "08/11/2022 13:00",
                     "26/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com"
                 ),
                 FlightDomain.FlightDomainItem(
                     "5",
@@ -199,7 +209,8 @@ class FlightOffersUseCaseTest {
                     "07/11/2022 11:30",
                     "07/11/2022 08:30",
                     "26/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com"
                 )
             )
 
@@ -212,9 +223,13 @@ class FlightOffersUseCaseTest {
                 )
             } returns flightDomain
 
-            coEvery { flightsRepository.getViewedFlights() } returns listOf()
+            coEvery {
+                flightsRepository.getFlights(
+                    "20/10/2022",
+                    "19/11/2022"
+                )
+            } returns FlightDomain.FlightDomainEntity(emptyList())
             Assert.assertEquals(flightOffersUseCase.invoke(currentDate), filteredFlights)
         }
     }
-
 }

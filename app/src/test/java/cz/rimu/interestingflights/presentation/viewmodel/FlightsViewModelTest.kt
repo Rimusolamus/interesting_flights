@@ -32,7 +32,8 @@ class FlightsViewModelTest : ViewModelTest() {
                     "26/10/2022 22:30",
                     "26/10/2022 03:30",
                     "26/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com",
                 ),
                 FlightDomain.FlightDomainItem(
                     "2",
@@ -45,7 +46,8 @@ class FlightsViewModelTest : ViewModelTest() {
                     "07/11/2022 11:30",
                     "07/11/2022 08:30",
                     "26/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com"
                     )
             )
 

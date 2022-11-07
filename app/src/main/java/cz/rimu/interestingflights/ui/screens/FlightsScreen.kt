@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -13,8 +12,8 @@ import androidx.compose.ui.res.stringResource
 import cz.rimu.interestingflights.R
 import cz.rimu.interestingflights.domain.model.FlightDomain
 import cz.rimu.interestingflights.ui.common.ErrorView
-import cz.rimu.interestingflights.ui.FullScreenNoDataView
-import cz.rimu.interestingflights.ui.FullScreenProgressBar
+import cz.rimu.interestingflights.ui.common.FullScreenNoDataView
+import cz.rimu.interestingflights.ui.common.FullScreenProgressBar
 import cz.rimu.interestingflights.ui.common.FlightCard
 import cz.rimu.interestingflights.viewmodel.FlightsViewModel
 import kiwi.orbit.compose.ui.controls.Scaffold

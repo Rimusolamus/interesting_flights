@@ -20,7 +20,7 @@ import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import cz.rimu.interestingflights.R
 import cz.rimu.interestingflights.domain.model.FlightDomain
-import cz.rimu.interestingflights.ui.FullScreenProgressBar
+import cz.rimu.interestingflights.ui.common.FullScreenProgressBar
 import cz.rimu.interestingflights.ui.common.ErrorView
 import cz.rimu.interestingflights.viewmodel.DetailViewModel
 import kiwi.orbit.compose.ui.OrbitTheme

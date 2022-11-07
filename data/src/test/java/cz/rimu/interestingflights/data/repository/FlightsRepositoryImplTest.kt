@@ -6,6 +6,7 @@ import cz.rimu.interestingflights.data.remote.data.FlightsRemoteDataSourceImpl
 import cz.rimu.interestingflights.data.remote.model.FlightData
 import cz.rimu.interestingflights.domain.model.FlightDomain
 import io.mockk.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 
@@ -18,7 +19,8 @@ class FlightsRepositoryImplTest {
     private val flightsRepositoryImpl =
         FlightsRepositoryImpl(
             flightsRemoteDataSourceImpl,
-            viewedFlightsLocalDataSource
+            viewedFlightsLocalDataSource,
+            Dispatchers.Unconfined
         )
     private val startDate = "20/10/2022"
     private val endDate = "19/11/2022"
@@ -38,7 +40,8 @@ class FlightsRepositoryImplTest {
                     "26/10/2022 22:30",
                     "26/10/2022 03:30",
                     "20/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com"
                 ),
                 FlightDomain.FlightDomainItem(
                     "2",
@@ -51,7 +54,8 @@ class FlightsRepositoryImplTest {
                     "07/11/2022 11:30",
                     "07/11/2022 08:30",
                     "20/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com"
                 ),
                 FlightDomain.FlightDomainItem(
                     "3",
@@ -64,7 +68,8 @@ class FlightsRepositoryImplTest {
                     "08/11/2022 15:30",
                     "08/11/2022 13:00",
                     "20/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com"
                 ),
                 FlightDomain.FlightDomainItem(
                     "4",
@@ -77,7 +82,8 @@ class FlightsRepositoryImplTest {
                     "08/11/2022 15:00",
                     "08/11/2022 13:00",
                     "20/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com"
                 ),
                 FlightDomain.FlightDomainItem(
                     "5",
@@ -90,7 +96,8 @@ class FlightsRepositoryImplTest {
                     "07/11/2022 11:30",
                     "07/11/2022 08:30",
                     "20/10/2022",
-                    "london_gb"
+                    "london_gb",
+                    "https://google.com"
                 )
             )
 
@@ -135,7 +142,8 @@ class FlightsRepositoryImplTest {
                 "26/10/2022 22:30",
                 "26/10/2022 03:30",
                 "26/10/2022",
-                "london_gb"
+                "london_gb",
+                "https://google.com"
             ),
             FlightDomain.FlightDomainItem(
                 "2",
@@ -148,7 +156,8 @@ class FlightsRepositoryImplTest {
                 "07/11/2022 11:30",
                 "07/11/2022 08:30",
                 "26/10/2022",
-                "london_gb"
+                "london_gb",
+                "https://google.com"
             ),
             FlightDomain.FlightDomainItem(
                 "3",
@@ -161,7 +170,8 @@ class FlightsRepositoryImplTest {
                 "08/11/2022 15:30",
                 "08/11/2022 13:00",
                 "26/10/2022",
-                "london_gb"
+                "london_gb",
+                "https://google.com"
             ),
             FlightDomain.FlightDomainItem(
                 "4",
@@ -174,7 +184,8 @@ class FlightsRepositoryImplTest {
                 "08/11/2022 15:00",
                 "08/11/2022 13:00",
                 "26/10/2022",
-                "london_gb"
+                "london_gb",
+                "https://google.com"
             ),
             FlightDomain.FlightDomainItem(
                 "5",
@@ -187,7 +198,8 @@ class FlightsRepositoryImplTest {
                 "07/11/2022 11:30",
                 "07/11/2022 08:30",
                 "26/10/2022",
-                "london_gb"
+                "london_gb",
+                "https://google.com"
             )
         )
 

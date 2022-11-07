@@ -1,10 +1,10 @@
 package cz.rimu.interestingflights.domain.usecase
 
-import cz.rimu.interestingflights.domain.di.DispatcherModule;
+import cz.rimu.interestingflights.domain.di.DispatcherModule
 import cz.rimu.interestingflights.domain.model.FlightDomain
 import cz.rimu.interestingflights.domain.repository.FlightsRepository
-import javax.inject.Inject;
-import kotlinx.coroutines.CoroutineDispatcher;
+import javax.inject.Inject
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 
 class FlightDetailUseCase @Inject constructor(

@@ -1,4 +1,4 @@
-package cz.rimu.interestingflights.ui
+package cz.rimu.interestingflights.ui.common
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*

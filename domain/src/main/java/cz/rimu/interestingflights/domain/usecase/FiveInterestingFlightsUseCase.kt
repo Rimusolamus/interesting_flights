@@ -15,6 +15,8 @@ class FiveInterestingFlightsUseCase @Inject constructor(
     private val flightsRepository: FlightsRepository,
     @DispatcherModule.IoDispatcher private val coroutineDispatcher: CoroutineDispatcher
 ) {
+
+    // as we get flights for a specific date and wipe DB with the new fetch flights would be unique
     suspend operator fun invoke(startDate: Date): FlightDomain =
         withContext(coroutineDispatcher) {
             val result = flightsRepository.getFlights(
