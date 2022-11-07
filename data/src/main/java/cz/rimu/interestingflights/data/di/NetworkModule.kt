@@ -1,6 +1,6 @@
 package cz.rimu.interestingflights.data.di
 
-import cz.rimu.interestingflights.data.constant.Constants
+import cz.rimu.interestingflights.data.constant.BASE_URL
 import cz.rimu.interestingflights.data.remote.service.ApiService
 import dagger.Module
 import dagger.Provides
@@ -18,7 +18,7 @@ object NetworkModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
+            .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
     }

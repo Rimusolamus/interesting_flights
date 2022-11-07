@@ -2,5 +2,4 @@
   <string name="app_name">Interesting flights</string>
   <string name="all_flights_screen">5 Routes to evacuate tomorrow</string>
   <string name="no_data_screen">Unfortunately, we can\'t find flights for you. Try to open the app tomorrow, or find evacuation by yourself :P</string>
-  <string name="image_url">https://images.kiwi.com/photos/600x330/%1$s.jpg</string>
 </resources>

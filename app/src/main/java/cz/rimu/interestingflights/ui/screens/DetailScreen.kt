@@ -12,16 +12,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import cz.rimu.interestingflights.R
 import cz.rimu.interestingflights.domain.model.FlightDomain
 import cz.rimu.interestingflights.ui.common.FullScreenProgressBar
 import cz.rimu.interestingflights.ui.common.ErrorView
+import cz.rimu.interestingflights.util.imageFor
 import cz.rimu.interestingflights.viewmodel.DetailViewModel
 import kiwi.orbit.compose.ui.OrbitTheme
 import kiwi.orbit.compose.ui.controls.ButtonPrimary
@@ -76,7 +75,7 @@ private fun FlightDetailContent(flight: FlightDomain.FlightDomainItem, goToUrl: 
                 .weight(1f)
         ) {
             GlideImage(
-                model = stringResource(R.string.image_url, flight.mapIdto),
+                model = imageFor(flight.mapIdto),
                 contentScale = ContentScale.FillWidth,
                 contentDescription = null,
                 modifier = Modifier

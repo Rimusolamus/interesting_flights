@@ -1,8 +1,8 @@
 package cz.rimu.interestingflights.data.repository
 
 import com.squareup.moshi.Moshi
-import cz.rimu.interestingflights.data.constant.Constants.GENERAL_ERROR
-import cz.rimu.interestingflights.data.constant.Constants.GEO_IP_URL
+import cz.rimu.interestingflights.data.constant.GENERAL_ERROR
+import cz.rimu.interestingflights.data.constant.GEO_IP_URL
 import cz.rimu.interestingflights.data.local.data.FlightsLocalDataSource
 import cz.rimu.interestingflights.data.remote.data.FlightsRemoteDataSourceImpl
 import cz.rimu.interestingflights.data.remote.model.Flight

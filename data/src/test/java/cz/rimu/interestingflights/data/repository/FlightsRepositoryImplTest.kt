@@ -1,6 +1,6 @@
 package cz.rimu.interestingflights.data.repository
 
-import cz.rimu.interestingflights.data.constant.Constants.CONNECT_EXCEPTION
+import cz.rimu.interestingflights.data.constant.CONNECT_EXCEPTION
 import cz.rimu.interestingflights.data.local.data.FlightsLocalDataSource
 import cz.rimu.interestingflights.data.remote.data.FlightsRemoteDataSourceImpl
 import cz.rimu.interestingflights.data.remote.model.FlightData

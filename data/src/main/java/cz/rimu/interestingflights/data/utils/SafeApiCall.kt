@@ -1,11 +1,11 @@
 package cz.rimu.interestingflights.data.utils
 
-import cz.rimu.interestingflights.data.constant.Constants.CONNECT_EXCEPTION
-import cz.rimu.interestingflights.data.constant.Constants.GENERAL_ERROR
-import cz.rimu.interestingflights.data.constant.Constants.SOCKET_TIME_OUT_EXCEPTION
-import cz.rimu.interestingflights.data.constant.Constants.UNKNOWN_HOST_EXCEPTION
-import cz.rimu.interestingflights.data.constant.Constants.UNKNOWN_NETWORK_EXCEPTION
+import cz.rimu.interestingflights.data.constant.CONNECT_EXCEPTION
+import cz.rimu.interestingflights.data.constant.GENERAL_ERROR
 import cz.rimu.interestingflights.data.constant.NetworkStatus
+import cz.rimu.interestingflights.data.constant.SOCKET_TIME_OUT_EXCEPTION
+import cz.rimu.interestingflights.data.constant.UNKNOWN_HOST_EXCEPTION
+import cz.rimu.interestingflights.data.constant.UNKNOWN_NETWORK_EXCEPTION
 import retrofit2.HttpException
 import retrofit2.Response
 import java.net.ConnectException

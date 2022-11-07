@@ -14,14 +14,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import cz.rimu.interestingflights.R
 import cz.rimu.interestingflights.domain.model.FlightDomain
+import cz.rimu.interestingflights.util.imageFor
 import kiwi.orbit.compose.icons.Icons
 import kiwi.orbit.compose.ui.OrbitTheme
 import kiwi.orbit.compose.ui.controls.Card
@@ -46,7 +45,7 @@ fun FlightCard(flight: FlightDomain.FlightDomainItem, navigateToDetail: (String)
 
         ) {
             GlideImage(
-                model = stringResource(R.string.image_url, flight.mapIdto),
+                model = imageFor(flight.mapIdto),
                 contentScale = ContentScale.FillWidth,
                 contentDescription = null,
                 modifier = Modifier
