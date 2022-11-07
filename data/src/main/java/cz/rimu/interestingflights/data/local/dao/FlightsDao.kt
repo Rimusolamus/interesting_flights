@@ -11,6 +11,9 @@ interface FlightsDao {
     @Query("SELECT * FROM viewedFlightsTable Where retrievalDate = :startDate")
     suspend fun flightsByDate(startDate: String): List<FlightDomain.FlightDomainItem>
 
+    @Query("SELECT * FROM viewedFlightsTable Where id = :id")
+    suspend fun flightById(id: String): FlightDomain.FlightDomainItem
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveFlights(flights: List<FlightDomain.FlightDomainItem>)
 

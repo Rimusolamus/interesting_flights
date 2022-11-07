@@ -37,6 +37,9 @@ class FlightsViewModel @Inject constructor(
                 is FlightDomain.Failure -> FlightsState(
                     errorMessage = result.errorText
                 )
+                else -> {
+                    FlightsState(errorMessage = "Unknown error")
+                }
             }
         }
     }

@@ -8,6 +8,8 @@ interface FlightsRepository {
         endDate: String
     ): FlightDomain
 
+    suspend fun getFlightById(id: String): FlightDomain
+
     suspend fun saveFlights(flights: List<FlightDomain.FlightDomainItem>)
     suspend fun deleteAllFlights()
 }

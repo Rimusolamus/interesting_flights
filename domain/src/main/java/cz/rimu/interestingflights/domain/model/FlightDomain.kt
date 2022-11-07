@@ -9,6 +9,10 @@ sealed class FlightDomain {
         val flights: List<FlightDomainItem>
     ) : FlightDomain()
 
+    data class FlightDomainSingleEntity(
+        val flight: FlightDomainItem
+    ) : FlightDomain()
+
     @Entity(tableName = "viewedFlightsTable")
     data class FlightDomainItem(
         @PrimaryKey

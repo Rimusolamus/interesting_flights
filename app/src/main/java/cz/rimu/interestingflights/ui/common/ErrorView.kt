@@ -1,4 +1,4 @@
-package cz.rimu.interestingflights.ui
+package cz.rimu.interestingflights.ui.common
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -15,7 +15,7 @@ import kiwi.orbit.compose.ui.OrbitTheme
 import kiwi.orbit.compose.ui.controls.Text
 
 @Composable
-fun FullScreenErrorView(errorMessage: String) {
+fun ErrorView(errorMessage: String) {
     Column(
         modifier = Modifier
             .fillMaxSize()

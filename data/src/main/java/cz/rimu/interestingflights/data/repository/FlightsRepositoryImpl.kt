@@ -9,9 +9,10 @@ import cz.rimu.interestingflights.data.remote.model.Flight
 import cz.rimu.interestingflights.data.remote.model.GeoIp
 import cz.rimu.interestingflights.data.utils.getStringDate
 import cz.rimu.interestingflights.domain.constants.Constants
+import cz.rimu.interestingflights.domain.di.DispatcherModule
 import cz.rimu.interestingflights.domain.model.FlightDomain
 import cz.rimu.interestingflights.domain.repository.FlightsRepository
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -19,14 +20,15 @@ import javax.inject.Inject
 
 class FlightsRepositoryImpl @Inject constructor(
     private val flightsRemoteDataSourceImpl: FlightsRemoteDataSourceImpl,
-    private val viewedFlightsLocalDataSource: FlightsLocalDataSource
+    private val viewedFlightsLocalDataSource: FlightsLocalDataSource,
+    @DispatcherModule.IoDispatcher private val coroutineDispatcher: CoroutineDispatcher
 ) : FlightsRepository {
 
     override suspend fun getFlights(
         startDate: String, endDate: String
     ): FlightDomain {
 
-        val localFlights = viewedFlightsLocalDataSource.viewedFlightsByDate(startDate)
+        val localFlights = viewedFlightsLocalDataSource.flightsByDate(startDate)
         if (localFlights.isNotEmpty()) {
             return FlightDomain.FlightDomainEntity(localFlights)
         }
@@ -48,6 +50,10 @@ class FlightsRepositoryImpl @Inject constructor(
         } ?: run {
             FlightDomain.Failure(response.errorMessage ?: GENERAL_ERROR)
         }
+    }
+
+    override suspend fun getFlightById(id: String): FlightDomain {
+        return FlightDomain.FlightDomainSingleEntity(viewedFlightsLocalDataSource.flightById(id))
     }
 
     private fun getFlightDomainItem(flight: Flight, currency: String?, startDate: String) =
@@ -75,12 +81,10 @@ class FlightsRepositoryImpl @Inject constructor(
 
     // temporary solution to get location
     private suspend fun getLocation(): String {
-        return withContext(Dispatchers.IO) {
+        return withContext(coroutineDispatcher) {
             try {
                 val client = OkHttpClient()
-                val request = Request.Builder()
-                    .url(GEO_IP_URL)
-                    .build()
+                val request = Request.Builder().url(GEO_IP_URL).build()
                 val response = client.newCall(request).execute()
                 val geoIp = Moshi.Builder().build().adapter(GeoIp::class.java)
                     .fromJson(response.body?.string() ?: "")

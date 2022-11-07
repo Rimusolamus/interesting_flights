@@ -95,7 +95,7 @@ class FlightsRepositoryImplTest {
             )
 
         runBlocking {
-            coEvery { viewedFlightsLocalDataSource.viewedFlightsByDate(startDate) } returns viewedFlights
+            coEvery { viewedFlightsLocalDataSource.flightsByDate(startDate) } returns viewedFlights
             Assert.assertEquals(
                 FlightDomain.FlightDomainEntity(flights = viewedFlights),
                 flightsRepositoryImpl.getFlights(startDate, endDate),
