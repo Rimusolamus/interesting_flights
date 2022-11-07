@@ -72,6 +72,7 @@ class FlightsRepositoryImpl @Inject constructor(
             }),
             retrievalDate = startDate,
             mapIdto = flight.mapIdto ?: "",
+            deepLink = flight.deepLink
         )
 
     override suspend fun saveFlights(flights: List<FlightDomain.FlightDomainItem>) =

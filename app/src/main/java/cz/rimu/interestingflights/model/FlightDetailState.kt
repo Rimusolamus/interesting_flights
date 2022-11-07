@@ -14,6 +14,7 @@ data class FlightDetailState(
         "",
         "",
         "",
+        "",
         ""
     ),
     val errorMessage: String = "",

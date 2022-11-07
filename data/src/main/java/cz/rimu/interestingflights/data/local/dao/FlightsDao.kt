@@ -8,15 +8,15 @@ import cz.rimu.interestingflights.domain.model.FlightDomain
 
 @Dao
 interface FlightsDao {
-    @Query("SELECT * FROM viewedFlightsTable Where retrievalDate = :startDate")
+    @Query("SELECT * FROM flightsTable Where retrievalDate = :startDate")
     suspend fun flightsByDate(startDate: String): List<FlightDomain.FlightDomainItem>
 
-    @Query("SELECT * FROM viewedFlightsTable Where id = :id")
+    @Query("SELECT * FROM flightsTable Where id = :id")
     suspend fun flightById(id: String): FlightDomain.FlightDomainItem
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveFlights(flights: List<FlightDomain.FlightDomainItem>)
 
-    @Query("DELETE FROM viewedFlightsTable")
+    @Query("DELETE FROM flightsTable")
     suspend fun deleteAllFlights()
 }

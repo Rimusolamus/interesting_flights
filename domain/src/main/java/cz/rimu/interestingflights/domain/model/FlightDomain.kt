@@ -13,7 +13,7 @@ sealed class FlightDomain {
         val flight: FlightDomainItem
     ) : FlightDomain()
 
-    @Entity(tableName = "viewedFlightsTable")
+    @Entity(tableName = "flightsTable")
     data class FlightDomainItem(
         @PrimaryKey
         val id: String,
@@ -26,7 +26,8 @@ sealed class FlightDomain {
         val arrivalTime: String,
         val departureTime: String,
         val retrievalDate: String,
-        val mapIdto: String
+        val mapIdto: String,
+        val deepLink: String
         )
 
     data class Failure(val errorText: String) : FlightDomain()

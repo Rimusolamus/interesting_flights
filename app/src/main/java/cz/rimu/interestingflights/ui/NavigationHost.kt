@@ -1,5 +1,6 @@
 package cz.rimu.interestingflights.ui
 
+import android.content.Intent
 import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -7,7 +8,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import cz.rimu.interestingflights.navigation.NavRoute
-import cz.rimu.interestingflights.ui.common.ErrorView
 import cz.rimu.interestingflights.ui.screens.DetailScreen
 import cz.rimu.interestingflights.ui.screens.FlightsScreen
 import cz.rimu.interestingflights.viewmodel.DetailViewModel
@@ -27,7 +27,9 @@ fun NavigationHost() {
         }
         composable(route = NavRoute.Detail.path) {
             val viewModel = hiltViewModel<DetailViewModel>()
-            DetailScreen(viewModel, backToMain = { navController.popBackStack() })
+            DetailScreen(viewModel, backToMain = { navController.popBackStack() }, goToUrl = { url ->
+                navController.context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+            })
         }
     }
 
